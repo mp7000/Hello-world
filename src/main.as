@@ -7,7 +7,7 @@ package
 		public function main()
 		{
 			trace("hej morten");
-			
+			trace("hej igen");
 		}
 	}
 }
