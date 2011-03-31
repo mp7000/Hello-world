@@ -1,6 +1,7 @@
 package app
 {
 	import app.Background;
+	
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -10,9 +11,16 @@ package app
 	public class MenuButtonMain extends MovieClip
 	{
 		
+		
 	//	private var _btnLabel:TextField;
 	//	private var _obj:Object;
+		public static const STATUS_CHANGED:String = "statusChanged";
+		public static const STATUS_CHANGED_BACK:String = "statusChangedBack";
+
 		
+
+
+
 		
 		public function MenuButtonMain()
 		{
@@ -33,9 +41,18 @@ package app
 			addEventListener(MouseEvent.ROLL_OVER, mouseOver);
 
 			addEventListener(MouseEvent.ROLL_OUT, mouseOut);
+			
+		//	addEventListener("CustomEvent",test);
+
 		//	addEventListener(MouseEvent.CLICK, mouseClick);
 			
 
+		}
+		private function test(e:Event):void{
+			//bgMain.showBg();
+			//bgMain.showBg();
+			
+			
 		}
 		
 		
@@ -44,11 +61,20 @@ package app
 			mc.removeEventListener(Event.ENTER_FRAME, rewind);
 			mc.play()
 			mc.addEventListener(Event.ENTER_FRAME, advance);
+			dispatchEvent(new Event("statusChanged", true));
+
+		//	dispatchEvent(new Event("CustomEvent"));
+		//	dispatchTheEvent()
+			
+			//dispatch custom event her 
+			
 		}
 	
 		private function mouseOut(e:MouseEvent):void {
 			var mc:MovieClip = MovieClip(e.currentTarget);
 			mc.gotoAndPlay(1);
+			dispatchEvent(new Event("statusChangedBack", true));
+
 		}
 		
 		private function advance(e:Event):void {
@@ -67,6 +93,11 @@ package app
 			}else {
 				mc.prevFrame();
 			}
+		}
+		private function dispatchTheEvent():void{
+			
+			dispatchEvent(new Event(STATUS_CHANGED));
+			
 		}
 /*		
 		private function mouseClick(e:MouseEvent):void {

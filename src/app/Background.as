@@ -5,7 +5,7 @@ package app
 	import flash.display.*;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
-	import flash.events.Event;
+	import flash.events.*;
 	import flash.events.MouseEvent;
 	import flash.filters.BlurFilter;
 	
@@ -25,8 +25,14 @@ package app
 	{
 		//Movieclip i library der hedder background1 og background2 som baseclass har denne klasse
 		//Declare variables
+		private var testObj:MenuButtonMain=new MenuButtonMain();
+		
 		private var owidth:int = 0;
 		private var oheight:int = 0;
+		
+		private var isVisible:Boolean;
+		
+		private var container:Sprite = new Sprite();
 	//	private var off:Object;
 	//	public var bg:Background = new Background();
 	
@@ -47,6 +53,8 @@ package app
 			init(null)
 			else	
 			addEventListener(Event.ADDED_TO_STAGE, init);
+			addEventListener("Test", test);
+
 			
 	//		owidth = bg.width;
 			
@@ -63,6 +71,21 @@ package app
 		public function init(e:Event):void{	
 			
 			
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.align = StageAlign.TOP_LEFT;
+			
+			this.addEventListener("CustomEvent",test);
+			
+			var reg2 = stage.stageWidth / 2;
+			var reg1 = stage.stageHeight / 2;
+			this.x = reg2;
+			this.y = reg1;
+			this.width = stage.stageWidth;
+			this.height = stage.stageHeight;
+			( this.scaleX > this.scaleY ) ? this.scaleY = this.scaleX : this.scaleX = this.scaleY;
+
+		//	this.scaleX <= this.scaleY ? (this.scaleX = this.scaleY) : (this.scaleY = this.scaleX);
+			
 		//	visible=true;
 			owidth = this.width;
 			oheight = this.height;
@@ -75,17 +98,21 @@ package app
 	//		addChild(bg);
 			//visible = true;
 			//trace("hej ");
-			this.x=550;
-			this.y=stage.stageHeight/2;
+		//	this.x=550;
+		//	this.y=stage.stageHeight/2;
 			stage.addEventListener(Event.RESIZE, handleStageResize);
-			handleStageResize(null);
+			//handleStageResize(null);
 
 			
 			
 		}
-		public function test(e:MouseEvent):void{
-			visible=false;
-		}	
+		public function test(e:Event):void{
+			
+			trace("kaj2");
+		}
+
+		
+		
 
 		
 		public function showBg():void{
@@ -100,11 +127,31 @@ package app
 			
 		}
 		
+		public function hideBg():void{
+			
+			this.visible = false;
+
+			
+		}
+
+		
 		
 		
 		
 		private function handleStageResize(e:Event):void {
-			trace(stage.width+"  "+ stage.stageHeight+"   bg");
+			
+			var reg2 = stage.stageWidth / 2;
+			var reg1 = stage.stageHeight / 2;
+			this.x = reg2;
+			this.y = reg1;
+			this.width = stage.stageWidth;
+			this.height = stage.stageHeight;
+			( this.scaleX > this.scaleY ) ? this.scaleY = this.scaleX : this.scaleX = this.scaleY;
+
+			
+			//	this.scaleX <= this.scaleY ? (this.scaleX = this.scaleY) : (this.scaleY = this.scaleX);
+
+	/*		trace(stage.width+"  "+ stage.stageHeight+"   bg");
 			
 			//	visible=true;
 			//proportional scale
@@ -112,7 +159,7 @@ package app
 				
 				this.width = stage.stageWidth;
 			
-				this.scaleY = this.scaleX; 
+			//	this.scaleY = this.scaleX; 
 				trace("hej kurt");
 				
 			}else{
@@ -121,7 +168,7 @@ package app
 				this.width = stage.stageWidth;
 				//this.scaleX = this.scaleY;
 				trace("hrj oo");
-			}
+			}*/
 			
 			
 		}
