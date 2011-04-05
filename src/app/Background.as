@@ -53,7 +53,6 @@ package app
 			init(null)
 			else	
 			addEventListener(Event.ADDED_TO_STAGE, init);
-			addEventListener("Test", test);
 
 			
 	//		owidth = bg.width;
@@ -69,12 +68,12 @@ package app
 		}
 		
 		public function init(e:Event):void{	
-			
+			this.visible=false;
 			
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
 			
-			this.addEventListener("CustomEvent",test);
+			
 			
 			var reg2 = stage.stageWidth / 2;
 			var reg1 = stage.stageHeight / 2;
@@ -106,10 +105,7 @@ package app
 			
 			
 		}
-		public function test(e:Event):void{
-			
-			trace("kaj2");
-		}
+	
 
 		
 		

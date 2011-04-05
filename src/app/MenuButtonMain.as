@@ -1,6 +1,7 @@
 package app
 {
 	import app.Background;
+	import app.FooterButtonMain;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -48,15 +49,8 @@ package app
 			
 
 		}
-		private function test(e:Event):void{
-			//bgMain.showBg();
-			//bgMain.showBg();
-			
-			
-		}
-		
-		
-		public function mouseOver(e:MouseEvent):void{
+				
+		private function mouseOver(e:MouseEvent):void{
 			var mc:MovieClip = MovieClip(e.currentTarget);
 			mc.removeEventListener(Event.ENTER_FRAME, rewind);
 			mc.play()
