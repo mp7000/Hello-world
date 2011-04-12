@@ -34,7 +34,7 @@ package app
 			container.graphics.endFill();
 			
 			container.x=stage.stageWidth-200;
-			container.y=stage.stageHeight-65;
+			container.y=stage.stageHeight-58;
 			
 			addChild(container);
 			
