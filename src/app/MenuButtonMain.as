@@ -2,6 +2,7 @@ package app
 {
 	import app.Background;
 	import app.FooterButtonMain;
+	import app.ButtonAnimation;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -17,6 +18,9 @@ package app
 	//	private var _obj:Object;
 		public static const STATUS_CHANGED:String = "statusChanged";
 		public static const STATUS_CHANGED_BACK:String = "statusChangedBack";
+		
+		public static const PLAY_ANIMATION:String = "playAnimation";
+
 
 		
 
@@ -32,7 +36,7 @@ package app
 		//	_btnLabel.text = labl;
 		//	_btnLabel.mouseEnabled = false;
 		//	addChild(_btnLabel);
-			
+			trace("HEJEJEJ");
 			buttonMode = true;
 			useHandCursor = true;
 			mouseChildren = false;
@@ -52,10 +56,17 @@ package app
 				
 		private function mouseOver(e:MouseEvent):void{
 			var mc:MovieClip = MovieClip(e.currentTarget);
+			(getChildByName("animation") as MovieClip).removeEventListener(Event.ENTER_FRAME, rewind);
+			(getChildByName("animation") as MovieClip).play(); 
+			(getChildByName("animation") as MovieClip).addEventListener(Event.ENTER_FRAME, advance);
+			
 			mc.removeEventListener(Event.ENTER_FRAME, rewind);
 			mc.play()
 			mc.addEventListener(Event.ENTER_FRAME, advance);
 			dispatchEvent(new Event("statusChanged", true));
+			
+		//	dispatchEvent(new Event("playAnimation", true));
+
 
 		//	dispatchEvent(new Event("CustomEvent"));
 		//	dispatchTheEvent()
@@ -67,6 +78,8 @@ package app
 		private function mouseOut(e:MouseEvent):void {
 			var mc:MovieClip = MovieClip(e.currentTarget);
 			mc.gotoAndPlay(1);
+		//	(getChildByName("animation") as MovieClip).play(); 
+			(getChildByName("animation") as MovieClip).addEventListener(Event.ENTER_FRAME, rewind);
 			dispatchEvent(new Event("statusChangedBack", true));
 
 		}

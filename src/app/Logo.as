@@ -61,13 +61,7 @@ package app
 
 
 			
-			//			var mc:MovieClip = MovieClip(e.currentTarget);
-
-			//dispatchEvent(new Event("statusChanged", true));
-			
-			//	dispatchEvent(new Event("CustomEvent"));
-			//	dispatchTheEvent()
-			
+			//			var mc:MovieClip = MovieClip(e.currentTarget)
 			//dispatch custom event her */
 			
 		}

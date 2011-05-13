@@ -13,7 +13,7 @@ package app
 		private var _navFooterData:Array;
 		private var posX:int;
 		private var container:Sprite;
-		
+		private var footerBtn:FooterButtonMain;
 		
 		public function NavigationFooterBar(navFooterData:Array)
 		{
@@ -41,10 +41,10 @@ package app
 			posX = container.width;
 			
 			for (var i:int=0; i < _navFooterData.length; i++) {
-				var footerBtn:FooterButtonMain = new FooterButtonMain();
+				footerBtn = new FooterButtonMain();
 				footerBtn.tf.text=(_navFooterData[i]);
 				footerBtn.name = _navFooterData[i];
-				trace(footerBtn.name);
+				trace(footerBtn.name+"HHHH");
 				footerBtn.x = posX-38;
 				footerBtn.y = 29;
 				
@@ -53,11 +53,13 @@ package app
 				posX -= footerBtn.width +1;
 			}
 			
+			
 		}
 		private function handleStageResize(e:Event):void {
 			//posX = stage.stageWidth;
 			//.x=posX;
 			
+
 			
 			container.x=stage.stageWidth-200;
 			container.y=stage.stageHeight-59;
